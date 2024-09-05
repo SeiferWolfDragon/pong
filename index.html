@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        video {
+            width: 80%;
+            height: auto;
+            margin-top: 20px;
+            border: 2px solid #333;
+        }
+        input[type="file"] {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Video Player</h1>
+    
+    <video id="videoPlayer" controls>
+        Your browser does not support the video tag.
+    </video>
+    
+    <br>
+    <input type="file" id="fileInput" accept="video/*">
+
+    <script>
+        const videoPlayer = document.getElementById('videoPlayer');
+        const fileInput = document.getElementById('fileInput');
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const fileURL = URL.createObjectURL(file);
+                videoPlayer.src = fileURL;
+                videoPlayer.play();
+            }
+        });
+    </script>
+
+</body>
+</html>
